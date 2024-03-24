@@ -1,0 +1,14 @@
+/target/
+
+Cargo.lock
+/.cargo/
+
+/.env
+
+.DS_Store
+
+*.bak
+*.bk
+
+.idea/
+.vscode/
