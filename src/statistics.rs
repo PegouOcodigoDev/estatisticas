@@ -1,4 +1,5 @@
 use core::fmt;
+use std::collections::HashMap;
 
 pub struct Statistics;
 
@@ -48,6 +49,24 @@ impl Statistics {
                 
             }
             false => return StatisticsResult::Integer(nums_copy[middle]),
+        }
     }
-}
+
+    pub fn mode(nums: &Vec<i32>) -> i32{
+        let mut frequency_map: HashMap<i32, i32> = HashMap::new();
+        
+        for &num in nums.iter() {
+         *frequency_map.entry(num).or_insert(0) += 1;   
+        }
+
+        let max = frequency_map.values().cloned().max().unwrap();
+
+        let mode: Vec<_> = frequency_map
+        .into_iter()
+        .filter(|&(_,value)| value == max )
+        .map(|(key,_)| key)
+        .collect();
+
+        mode[0]
+    }
 }
