@@ -1,6 +1,6 @@
 # Estatísticas
 
-Este é um projeto simples em Rust que calcula a média, mediana e moda de um conjunto de números gerados aleatoriamente.
+Este é um projeto simples em Rust que calcula a média, mediana, moda, desvio, desvio ao quadrado variancia e frequencia de um conjunto de números gerados aleatoriamente.
 
 ## Instalação
 
@@ -11,7 +11,7 @@ Este é um projeto simples em Rust que calcula a média, mediana e moda de um co
 
 ## Uso
 
-O programa gera um conjunto de 1.000 de números aleatórios entre 0 e 99 e, em seguida, calcula e exibe a média, mediana, moda, desvio e frequencia desses números.
+O programa gera um conjunto de 1.000 de números aleatórios entre 0 e 99 e, em seguida, calcula e exibe a média, mediana, moda, desvio, desvio ao quadrado variancia e frequencia desses números.
 
 ## Contribuição
 

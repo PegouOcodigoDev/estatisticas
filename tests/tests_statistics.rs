@@ -83,4 +83,33 @@ mod tests {
         
     }
 
+    #[test]
+    fn test_squared_deviation_float(){
+        let nums = vec![5, 3, 9, 14, 26, 12];
+        let squared_deviation = Statistics::squared_deviation(&nums);
+        let diff_nums = StatisticsCollections::Float(vec![42.25, 72.25, 6.25, 6.25, 210.25, 0.25]);
+
+        assert_eq!(squared_deviation, diff_nums);     
+        
+    }
+
+    #[test]
+    fn test_squared_deviation_integer(){
+        let nums = vec![2, 4, 6, 8, 12, 8, 2];
+        let squared_deviation = Statistics::squared_deviation(&nums);
+        let diff_nums = StatisticsCollections::Integer(vec![16, 4, 0, 4, 36, 4, 16]);
+
+        assert_eq!(squared_deviation, diff_nums);     
+        
+    }
+
+    #[test]
+    fn test_variance(){
+        let nums = vec![2, 4, 6, 8, 12, 8, 2];
+        let variance = Statistics::variance(&nums);
+        let result = StatisticsResult::Float(11.428571428571429);
+
+        assert_eq!(variance, result);     
+    }
+
 }

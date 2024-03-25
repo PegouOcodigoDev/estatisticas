@@ -14,8 +14,10 @@ fn main() {
     let median = Statistics::median(&nums);
     let mode = Statistics::mode(&nums);
     let deviation = Statistics::deviation(&nums);
+    let squared_deviation = Statistics::squared_deviation(&nums);
+    let variance = Statistics::variance(&nums);
     let frequency_map = Statistics::frequency(&nums);
     
 
-    println!("\n\nDado o vetor:{:?}\n\nA media dos valores é: {}\n\nA mediana dos valores é: {}\n\nA moda dos valores é: {}\n\nO desvio dos valores é: \n{}\n\nFrequência dos valores é: \n{:?}" , &nums[500..520], &mean, &median, &mode,&deviation,&frequency_map);
+    println!("\n\nDado o vetor:{:?}...\n\nA media dos valores é: {}\nA mediana dos valores é: {}\n\nA moda dos valores é: {}\n\nO desvio dos valores é: \n{}\n\nO desvio dos valores ao quadrado é: \n{}\n\nA variancia é: \n{}\n\nFrequência dos valores é: \n{:?}" , &nums[0..30], &mean, &median, &mode,&deviation, &squared_deviation, &variance,&frequency_map);
 }
