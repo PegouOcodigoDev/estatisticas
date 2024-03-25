@@ -12,6 +12,8 @@ fn main() {
     }
 
     let mean = Statistics::mean(&nums);
+    let median = Statistics::median(&nums);
 
-    println!("A media dos valores do conjunto nums é {}\n", mean);
+    println!(
+        "A media dos valores é {}\nA mediana dos valores é {}",mean, median);
 }
