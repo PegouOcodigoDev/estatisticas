@@ -3,6 +3,7 @@ use std::collections::HashMap;
 
 pub struct Statistics;
 
+#[derive(Debug, PartialEq)]
 pub enum StatisticsResult {
     Integer(i32),
     Float(f64),
@@ -18,7 +19,7 @@ impl fmt::Display for StatisticsResult {
 }
 
 impl Statistics {
-   pub fn mean(nums: &Vec<i32>) -> StatisticsResult{
+pub fn mean(nums: &Vec<i32>) -> StatisticsResult{
         let sum: i32 = nums.iter().sum();
         let mean:f64 = sum as f64 / nums.len() as f64;
 
@@ -43,8 +44,8 @@ impl Statistics {
                 let middle_elements = vec![nums_copy[middle], nums_copy[middle_left]];
                 let mean = Statistics::mean(&middle_elements);
                 match mean {
-                  StatisticsResult::Integer(value) => StatisticsResult::Integer(value),
-                  StatisticsResult::Float(value) => StatisticsResult::Float(value),
+                StatisticsResult::Integer(value) => StatisticsResult::Integer(value),
+                StatisticsResult::Float(value) => StatisticsResult::Float(value),
                 }
                 
             }
@@ -56,7 +57,7 @@ impl Statistics {
         let mut frequency_map: HashMap<i32, i32> = HashMap::new();
         
         for &num in nums.iter() {
-         *frequency_map.entry(num).or_insert(0) += 1;   
+        *frequency_map.entry(num).or_insert(0) += 1;   
         }
 
         let max = frequency_map.values().cloned().max().unwrap();

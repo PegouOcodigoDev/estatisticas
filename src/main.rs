@@ -1,7 +1,6 @@
-mod statistics;
-
-use statistics::Statistics;
 use rand::{self, Rng};
+mod statistics;
+use statistics::statistics::Statistics;
 
 fn main() {
     let mut rng = rand::thread_rng();
@@ -11,6 +10,7 @@ fn main() {
         *value = rng.gen_range(0..100);
     }
 
+    
     let mean = Statistics::mean(&nums);
     let median = Statistics::median(&nums);
     let mode = Statistics::mode(&nums);
