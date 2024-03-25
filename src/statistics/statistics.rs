@@ -9,11 +9,31 @@ pub enum StatisticsResult {
     Float(f64),
 }
 
+#[derive(Debug, PartialEq)]
+pub enum StatisticsCollections {
+    Integer(Vec<i32>),
+    Float(Vec<f64>),
+}
+
 impl fmt::Display for StatisticsResult {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             StatisticsResult::Integer(value) => write!(f,"{}", value),
             StatisticsResult::Float(value) => writeln!(f, "{:.2}", value)
+        }
+    }
+}
+
+impl fmt::Display for StatisticsCollections {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            StatisticsCollections::Integer(value) =>{ 
+                write!(f,"[{:?}]", value)
+            },
+            StatisticsCollections::Float(value) => {
+                let formated_vetor = value.iter().map(|&v| format!("{:.2}", v)).collect::<Vec<String>>().join(",");
+                writeln!(f, "[{:?}]", formated_vetor)
+            }
         }
     }
 }
@@ -72,4 +92,18 @@ impl Statistics {
 
         mode[0]
         }
+
+    pub fn deviation(nums: &Vec<i32>) -> StatisticsCollections{
+        let mean = Statistics::mean(&nums);
+        match mean {
+            StatisticsResult::Integer(value) => {
+                let diff_of_nums = nums.iter().map(|n| *n - value).collect::<Vec<_>>();
+                StatisticsCollections::Integer(diff_of_nums)
+            },
+            StatisticsResult::Float(value) => {
+                let diff_of_nums = nums.iter().map(|v| *v as f64).map(|v| v - value).collect::<Vec<_>>();
+                StatisticsCollections::Float(diff_of_nums)
+            }
+        }
+    }
 }

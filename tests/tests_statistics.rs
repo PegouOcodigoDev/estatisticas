@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use estatisticas::statistics::{Statistics, StatisticsResult};
+    use estatisticas::statistics::{Statistics, StatisticsCollections, StatisticsResult};
     use std::collections::HashMap;
 
     #[test]
@@ -54,4 +54,33 @@ mod tests {
 
         assert_eq!(median, result);
     }
+
+    #[test]
+    fn test_deviation_float(){
+        let nums = vec![5, 3, 9, 14, 26, 12];
+        let mean = Statistics::mean(&nums);
+        let deviation = match mean {
+            StatisticsResult::Integer(_value) => Statistics::deviation(&nums),
+            StatisticsResult::Float(_value) => Statistics::deviation(&nums),
+        };
+        let diff_nums = StatisticsCollections::Float(vec![-6.5, -8.5, -2.5, 2.5, 14.5, 0.5]);
+
+        assert_eq!(deviation, diff_nums);     
+        
+    }
+
+    #[test]
+    fn test_deviation_integer(){
+        let nums = vec![2, 4, 6, 8, 12, 8, 2];
+        let mean = Statistics::mean(&nums);
+        let deviation = match mean {
+            StatisticsResult::Integer(_value) => Statistics::deviation(&nums),
+            StatisticsResult::Float(_value) => Statistics::deviation(&nums),
+        };
+        let diff_nums = StatisticsCollections::Integer(vec![-4, -2, 0, 2, 6, 2,-4]);
+
+        assert_eq!(deviation, diff_nums);     
+        
+    }
+
 }
