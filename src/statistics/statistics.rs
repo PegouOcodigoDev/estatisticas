@@ -38,19 +38,13 @@ pub fn mean(nums: &Vec<i32>) -> StatisticsResult{
 
         nums_copy.sort();
 
-        match even {
-            true => {
+            if even{
                 let middle_left: usize = middle - 1;
                 let middle_elements = vec![nums_copy[middle], nums_copy[middle_left]];
-                let mean = Statistics::mean(&middle_elements);
-                match mean {
-                StatisticsResult::Integer(value) => StatisticsResult::Integer(value),
-                StatisticsResult::Float(value) => StatisticsResult::Float(value),
-                }
-                
+                return  Statistics::mean(&middle_elements);
             }
-            false => return StatisticsResult::Integer(nums_copy[middle]),
-        }
+            
+            StatisticsResult::Integer(nums_copy[middle])
     }
 
     pub fn mode(nums: &Vec<i32>) -> i32{
@@ -69,5 +63,5 @@ pub fn mean(nums: &Vec<i32>) -> StatisticsResult{
         .collect();
 
         mode[0]
-    }
+        }
 }
