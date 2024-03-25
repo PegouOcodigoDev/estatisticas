@@ -19,7 +19,18 @@ impl fmt::Display for StatisticsResult {
 }
 
 impl Statistics {
-pub fn mean(nums: &Vec<i32>) -> StatisticsResult{
+    
+    pub fn frequency(nums: &Vec<i32>) -> HashMap<i32, i32>{
+        let mut frequency_map: HashMap<i32, i32> = HashMap::new();
+        
+        for &num in nums.iter() {
+        *frequency_map.entry(num).or_insert(0) += 1;   
+        }
+
+        frequency_map
+    }
+
+    pub fn mean(nums: &Vec<i32>) -> StatisticsResult{
         let sum: i32 = nums.iter().sum();
         let mean:f64 = sum as f64 / nums.len() as f64;
 
@@ -48,11 +59,8 @@ pub fn mean(nums: &Vec<i32>) -> StatisticsResult{
     }
 
     pub fn mode(nums: &Vec<i32>) -> i32{
-        let mut frequency_map: HashMap<i32, i32> = HashMap::new();
         
-        for &num in nums.iter() {
-        *frequency_map.entry(num).or_insert(0) += 1;   
-        }
+        let frequency_map = Statistics::frequency(&nums);
 
         let max = frequency_map.values().cloned().max().unwrap();
 
