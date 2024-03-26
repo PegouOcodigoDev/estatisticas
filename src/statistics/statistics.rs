@@ -88,4 +88,8 @@ impl Statistics {
 
         max - min
     }
+
+    pub fn starges(nums: &Vec<i32>) -> i32{
+        1 + f64::log2(nums.len() as f64).round() as i32
+    }
 }

@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tests {
     use estatisticas::statistics::Statistics;
-    use std::collections::HashMap;
+    use std::{collections::HashMap, result};
 
     #[test]
     fn test_frequency() {
@@ -116,5 +116,14 @@ mod tests {
         let result = 12 - 2;
 
         assert_eq!(range, result);
+    }
+
+    #[test]
+    fn test_starges(){
+        let nums = vec![2, 4, 6, 8, 12, 8, 2];
+        let starges = Statistics::starges(&nums);
+        let result = 4;
+
+        assert_eq!(starges, result);
     }
 }
