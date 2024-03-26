@@ -14,13 +14,11 @@ impl Statistics {
     }
 
     pub fn mean(nums: &Vec<i32>) -> f64 {
-        let sum: i32 = nums.iter().sum();
-        sum as f64 / nums.len() as f64
+        nums.iter().sum::<i32>() as f64 / nums.len() as f64
     }
 
     pub fn meanf(nums: &Vec<f64>) -> f64 {
-        let sum: f64 = nums.iter().sum();
-        sum as f64 / nums.len() as f64
+        nums.iter().sum::<f64>() / nums.len() as f64
     }
 
     pub fn median(nums: &Vec<i32>) -> f64 {
@@ -56,21 +54,21 @@ impl Statistics {
 
     pub fn deviation(nums: &Vec<i32>) -> Vec<f64> {
         let mean = Statistics::mean(&nums);
-        return nums.iter().map(|v| *v as f64 - mean).collect();
+        nums.iter().map(|v| *v as f64 - mean).collect()
     }
 
     pub fn squared_deviation(nums: &Vec<i32>) -> Vec<f64>{
         let deviation = Statistics::deviation(&nums);
-        return deviation.iter().map(|v| v.powf(2.0)).collect();
+        deviation.iter().map(|v| v.powf(2.0)).collect()
     }
 
     pub fn variance(nums: &Vec<i32>) -> f64 {
         let squared_deviation = Statistics::squared_deviation(&nums);
-        return Statistics::meanf(&squared_deviation);
+        Statistics::meanf(&squared_deviation)
     }
 
     pub fn standart_deviation(nums: &Vec<i32>) -> f64{
         let variance = Statistics::variance(&nums);
-        return variance.sqrt();
+        variance.sqrt()
     }
 }
