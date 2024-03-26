@@ -71,4 +71,21 @@ impl Statistics {
         let variance = Statistics::variance(&nums);
         variance.sqrt()
     }
+
+    pub fn range(nums: &Vec<i32>) -> i32{
+        let mut max = nums[0];
+        let mut min = nums[0];
+
+        for &num in nums.iter() {
+            if num > max {
+                max = num;
+            }
+
+            if num < min {
+                min = max;
+            }
+        }
+
+        max - min
+    }
 }

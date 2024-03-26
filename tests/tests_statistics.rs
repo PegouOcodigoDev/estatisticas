@@ -108,4 +108,13 @@ mod tests {
 
         assert_eq!(standard_deviation, result);     
     }
+
+    #[test]
+    fn test_range() {
+        let nums = vec![2, 4, 6, 8, 12, 8, 2];
+        let range = Statistics::range(&nums);
+        let result = 12 - 2;
+
+        assert_eq!(range, result);
+    }
 }
